@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Image Checkbox Example</title>
+  <style>
+    /* CSS to position checkbox container */
+    .checkbox-container {
+      display: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    /* CSS to customize checkbox appearance */
+    .checkbox {
+      /* Change checkbox size */
+      width: 40px;
+      height: 40px;
+
+      /* Change checkbox color */
+      background-color: green;
+      border-radius: 3px;
+    }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var checkboxes = document.querySelectorAll('.checkbox');
+      
+      checkboxes.forEach(function(checkbox) {
+        checkbox.addEventListener('click', function(event) {
+          checkboxes.forEach(function(checkbox) {
+            checkbox.checked = false; // Uncheck all other checkboxes
+          });
+          this.checked = true; // Check the clicked checkbox
+        });
+      });
+    });
+    
+    function showCheckbox(checkboxContainerId) {
+      var checkboxContainers = document.querySelectorAll('.checkbox-container');
+      
+      checkboxContainers.forEach(function(checkboxContainer) {
+        checkboxContainer.style.display = "none"; // Hide all checkbox containers
+      });
+      
+      var checkboxContainer = document.getElementById(checkboxContainerId);
+      checkboxContainer.style.display = "block"; // Show the clicked checkbox container
+      
+      var checkbox = checkboxContainer.querySelector('.checkbox');
+      checkbox.checked = true; // Automatically check the checkbox
+    }
+  </script>
+</head>
+<body>
+  <h1>Click the image to show the checkbox</h1>
+  
+  <div style="position: relative; display: inline-block;">
+    <img src="images/image1.jpg" alt="Image 1" onclick="showCheckbox('checkbox-container1')">
+    <div id="checkbox-container1" class="checkbox-container">
+      <label for="checkbox1"></label>
+      <input type="checkbox" id="checkbox1" class="checkbox">
+    </div>
+  </div>
+  
+  <div style="position: relative; display: inline-block;">
+    <img src="images/image2.jpg" alt="Image 2" onclick="showCheckbox('checkbox-container2')">
+    <div id="checkbox-container2" class="checkbox-container">
+      <label for="checkbox2"></label>
+      <input type="checkbox" id="checkbox2" class="checkbox">
+    </div>
+  </div>
+  
+  <div style="position: relative; display: inline-block;">
+    <img src="images/image3.jpg" alt="Image 3" onclick="showCheckbox('checkbox-container3')">
+    <div id="checkbox-container3" class="checkbox-container">
+      <label for="checkbox3"></label>
+      <input type="checkbox" id="checkbox3" class="checkbox">
+    </div>
+  </div>
+  
+  <div style="position: relative; display: inline-block;">
+    <img src="images/image4.jpg" alt="Image 4" onclick="showCheckbox('checkbox-container4')">
+    <div id="checkbox-container4" class="checkbox-container">
+      <label for="checkbox4"></label>
+      <input type="checkbox" id="checkbox4" class="checkbox">
+    </div>
+  </div>
+</body>
+</html

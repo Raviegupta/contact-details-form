@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEW</title>
+    <link rel="stylesheet" href="style.css">
+
+    <script defer src="app.js"></script>
+
+    <!-- THIS CSS FOR STYLING THE CHECKBOX -->
+    <style>
+        /* CSS to position checkbox container */
+        .checkbox-container {
+          display: none;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+    
+        /* CSS to customize checkbox appearance */
+        .checkbox {
+          /* Change checkbox size */
+          width: 40px;
+          height: 40px;
+    
+          /* Change checkbox color */
+          background-color: green;
+          border-radius: 3px;
+        }
+    </style>
+
+</head>
+<body>
+    <!-- MAIN SECTION WHICH INCLUDES FORM AND ADDRESS -->
+    <main class="main-section flex">
+        <section class="form-part">
+            <form id="form">
+                <div class="flex section"><span>Name</span><input type="text" id="name" name="name" placeholder="Enter Your Name here ..." required></div>
+                <div class="flex section"><span>Email</span><input type="email" id="email" name="email" placeholder="Enter Your Email here ..." required></div>
+                <div class="flex section"><span>Phone</span><input type="tel" id="phone" name="phone" value="+1" placeholder="Enter Your Phone No here ..." required></div>
+                 
+               
+                <div class="captcha-and-submit-part">
+                  <span class="g-recaptcha captcha" data-sitekey=" 6LcLqw4mAAAAAOvBcHKwubl6k54xYB7Kvt2SjrlI">{$ AREA FOR CAPTCHA $}</span>
+                  <button type="submit" id="submit-btn" class="submit-btn-css">Submit</button>
+                </div>
+            </form>
+        </section>
+        
+        <section class="add-part flex">
+            <div class="social-icons-part flex flex-dirn-col">
+                <a href="#"><img src="images/unnamed.png" /></a>
+                <a href="#"><img src="images/unnamed (1).png" /></a>
+                <a href="#"><img src="images/unnamed (2).png" /></a>         
+            </div>   
+            <div class="address-part">
+                <h2>Adapt-a-Website</h2>
+                <h2>+1206.905.9614</h2>
+                <h3>info@adaptawebsite.com</h3>
+                <h2>Montreal,QC</h2>
+                <h2>Canada</h2>  
+            </div>
+        </section>
+    </main>
+
+
+    <!-- DUMMY BUTTON -->
+    <!-- <button id="submit-btn">Submit</button> -->
+
+
+    <!-- IMAGES SECTION PART -->
+    <section class="image-wrapper image-card-section-box hidden">
+        <p>Thank you for visiting our website and showing interest in our Wingard gallery. WE are delighted to offer you Free One Image you want to Download from above Images.</p> 
+        <p>After submitting your form that Image will be sent to your mail.</p>     
+        <section class="image-card-section flex">
+            <div class="cards card-1" style="position: relative;">
+                <img src="images/image1.jpg" alt="" class="image-cards" onclick="showCheckbox('checkbox-container1')">
+                <div class="card-details">
+                    <h3>MAGIC BOX</h3>
+                </div>
+                <div id="checkbox-container1" class="checkbox-container">
+                    <label for="checkbox1"></label>
+                    <input type="checkbox" id="checkbox1" class="checkbox">
+                </div>
+            </div>
+            <div class="cards" style="position: relative;">
+                <img src="images/image2.jpg" alt="" class="image-cards card-2" onclick="showCheckbox('checkbox-container2')">
+                <div class="card-details">
+                    <h3>MAGIC BOX</h3>
+                </div>
+                <div id="checkbox-container2" class="checkbox-container">
+                    <label for="checkbox2"></label>
+                    <input type="checkbox" id="checkbox2" class="checkbox">
+                </div>
+            </div>
+            <div class="cards" style="position: relative;">
+                <img src="images/image3.jpg" alt="" class="image-cards card-3" onclick="showCheckbox('checkbox-container3')">
+                <div class="card-details">
+                    <h3>MAGIC BOX</h3>
+                </div>
+                <div id="checkbox-container3" class="checkbox-container">
+                    <label for="checkbox3"></label>
+                    <input type="checkbox" id="checkbox3" class="checkbox">
+                </div>
+            </div>
+            <div class="cards" style="position: relative;">
+                <img src="images/image4.jpg" alt="" class="image-cards card-4" onclick="showCheckbox('checkbox-container4')">
+                <div class="card-details">
+                    <h3>MAGIC BOX</h3>
+                </div>
+                <div id="checkbox-container4" class="checkbox-container">
+                    <label for="checkbox4"></label>
+                    <input type="checkbox" id="checkbox4" class="checkbox">
+                </div>
+            </div>
+        </section>
+
+        <div class="send-btn-wrapper">
+            <button type="submit" id="send-btn">SEND</button>
+        </div>    
+    </section>    
+    
+
+   
+
+
+    <!-- ************************THIS SCRIPT IS FOR SELECTING THE IMAGE**************************** -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          var checkboxes = document.querySelectorAll('.checkbox');
+          
+          checkboxes.forEach(function(checkbox) {
+            checkbox.addEventListener('click', function(event) {
+              checkboxes.forEach(function(checkbox) {
+                checkbox.checked = false; // Uncheck all other checkboxes
+              });
+              this.checked = true; // Check the clicked checkbox
+            });
+          });
+        });
+        
+        function showCheckbox(checkboxContainerId) {
+          var checkboxContainers = document.querySelectorAll('.checkbox-container');
+          
+          checkboxContainers.forEach(function(checkboxContainer) {
+            checkboxContainer.style.display = "none"; // Hide all checkbox containers
+          });
+          
+          var checkboxContainer = document.getElementById(checkboxContainerId);
+          checkboxContainer.style.display = "block"; // Show the clicked checkbox container
+          
+          var checkbox = checkboxContainer.querySelector('.checkbox');
+          checkbox.checked = true; // Automatically check the checkbox
+        }
+    </script>
+    <!-- ****************************************************************************************** -->   
+</body>
+</html>
